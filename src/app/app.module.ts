@@ -41,6 +41,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenucomponentComponent } from './menucomponent/menucomponent.component';
+import { BasicAuthHtppInterceptorService } from './service/basic-auth-htpp-interceptor-service.service';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 
 
@@ -48,12 +53,17 @@ import { MatTreeModule } from '@angular/material/tree';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MenucomponentComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
@@ -86,9 +96,14 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {  
+      provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true 
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

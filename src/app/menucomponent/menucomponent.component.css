@@ -1,0 +1,21 @@
+.mat-drawer-container
+{
+width: 100%;
+height: 100%;
+}
+
+.sidenav
+{
+    background-color: #ffd740;
+    width: 15%;
+}
+
+.logo-menu
+{
+    width: 110px;
+    margin-top: 8px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
