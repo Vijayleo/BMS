@@ -9,7 +9,7 @@ import { AuthenticationService } from '../service/jwt-authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  errorMsg=''
   constructor(private aAuthenticationService:AuthenticationService, private router:Router) { }
 
   ngOnInit(): void {
@@ -19,9 +19,8 @@ export class LoginComponent implements OnInit {
 
     console.log(form.value.username+" "+ form.value.password)
     this.aAuthenticationService.authenticate(form.value.username, form.value.password).subscribe(
-      data => {this.router.navigate(["welcome"]),
-      error => {console.error(error);}
-      }
+      data => {this.router.navigate(["welcome"])},
+      error => {this.errorMsg="Invalid Credentials"; }
     )
   }
 

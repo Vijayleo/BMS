@@ -1,7 +1,14 @@
-<mat-toolbar color = "accent">
+<mat-toolbar color="accent">
   <span><img src="../../assets/logo.png" alt="logo" class="logo-menu"></span>
   <span class="example-spacer"></span>
-  <button mat-button>Apply Loan</button>
-  <button mat-button>Profile</button>
+  <button mat-button [matMenuTriggerFor]="menu">Apply Loan</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Educational Loan</button>
+    <button mat-menu-item>Personal/Home Loan</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="profilemenu">Profile</button>
+  <mat-menu #profilemenu="matMenu">
+    <button mat-menu-item>Update Profile</button>
+  </mat-menu>
   <button mat-button (click)="logout()">Logout</button>
 </mat-toolbar>

@@ -1,9 +1,14 @@
-<div style="background-color: #ffd740;margin-top:0px;height: 50px;">
-  <p class="reg">Registration</p>
-</div>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
-    <mat-step [stepControl]="firstFormGroup">
+<mat-toolbar color="accent">
+  <span><img src="../../assets/logo.png" alt="logo" class="logo-reg"></span>
+  <span class="example-spacer reg">Registration</span>
+  <button mat-button (click)="cancel()">Cancel</button>
+</mat-toolbar>
+
+
+
+<mat-horizontal-stepper linear #stepper>
+  <mat-step [stepControl]="personalFormGroup" [editable]="isEditable">
+    <form [formGroup]="personalFormGroup">
       <ng-template matStepLabel>Personal Details</ng-template>
 
       <mat-form-field>
@@ -18,7 +23,7 @@
 
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" formControlName="password">
+        <input matInput type="password" placeholder="Password" formControlName="password">
       </mat-form-field><br>
 
       <div style="padding-top: 5px; padding-bottom: 12px;">
@@ -30,7 +35,6 @@
           </mat-radio-button>
         </mat-radio-group>
       </div>
-
 
       <mat-form-field appearance="fill">
         <mat-label>Date of Birth</mat-label>
@@ -59,7 +63,6 @@
         <input matInput placeholder="Contact No" formControlName="contactNo">
       </mat-form-field><br>
 
-
       <mat-form-field>
         <mat-label>Guardian Type</mat-label>
         <input matInput placeholder="Guardian Type" formControlName="gtype">
@@ -73,9 +76,14 @@
       <div>
         <button mat-flat-button color="accent" matStepperNext>Next</button>
       </div>
+    </form>
+  </mat-step>
 
-    </mat-step>
-    <mat-step label="Address Details">
+
+
+  <mat-step [stepControl]="addressFormGroup" [editable]="isEditable">
+    <form [formGroup]="addressFormGroup">
+      <ng-template matStepLabel>Address Details</ng-template>
 
       <mat-form-field>
         <mat-label>Address</mat-label>
@@ -98,13 +106,29 @@
       </mat-form-field>
 
 
-      <div>
-        <button mat-flat-button color="accent" matStepperPrevious>Back</button>
-        <button mat-flat-button color="accent" matStepperNext style="margin-left: 5px;">Next</button>
-      </div>
 
-    </mat-step>
-    <mat-step label="Account Details">
+      <div>
+        <button mat-flat-button color="accent" (click)= "goBack(stepper)" matStepperPrevious>Back</button>
+        <button mat-flat-button color="accent"  style="margin-left: 5px;" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+
+
+  <mat-step [stepControl]="accountFormGroup" [editable]="isEditable">
+    <form [formGroup]="accountFormGroup">
+      <ng-template matStepLabel>Account Details</ng-template>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Account Type</mat-label>
+        <mat-select formControlName="accountType">
+          <mat-option *ngFor="let acctype of accountTypes" [value]="acctype">
+            {{acctype}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field><br>
 
       <mat-form-field appearance="fill">
         <mat-label>Registration Date</mat-label>
@@ -113,7 +137,7 @@
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field><br>
 
-     
+
       <mat-form-field class="example-full-width">
         <mat-label>Select Id Proof</mat-label>
         <mat-select formControlName="customerId">
@@ -144,15 +168,16 @@
       </mat-form-field>
 
       <div>
-        <button mat-flat-button color="accent" matStepperPrevious>Back</button>
-        <button mat-flat-button color="accent" matStepperNext style="margin-left: 5px;">Next</button>
+        <button mat-flat-button color ="accent" (click)= "goBack(stepper)" matStepperPrevious>Back</button>
+        <button mat-flat-button color ="accent" style="margin-left: 5px;" matStepperNext>Next</button>
       </div>
+    </form>
+  </mat-step>
 
-    </mat-step>
 
-    <mat-step>
+  <mat-step [stepControl]="otherFormGroup" [editable]="isEditable">
+    <form [formGroup]="otherFormGroup">
       <ng-template matStepLabel>Other Details</ng-template>
-
       <mat-form-field>
         <mat-label>Account Holder Name</mat-label>
         <input matInput placeholder="Account Holder Name" formControlName="acHolderName">
@@ -167,15 +192,16 @@
         <mat-label>Account Holder Address</mat-label>
         <input matInput placeholder="Account Holder Address" formControlName="acHolderAddr">
       </mat-form-field>
-      <div>
-        <button mat-flat-button color="accent" matStepperPrevious>Back</button>
-        <button type="submit" mat-flat-button style="margin-left: 5px;background-color: deeppink; color: white;"
-          (click)="onSubmit()" >Submit</button><br>
 
-        <!-- <button mat-flat-button color="accent" (click)="stepper.reset()" style="margin-left: 5px;">Reset</button> -->
-        
-        <div class="statusMsg" *ngIf="message">{{message}} Please click here to <a routerLink="/login" style="display: block; font-size: 20px;">Login</a></div>
+      <div>
+        <button mat-flat-button color="accent" (click)= "goBack(stepper)" matStepperPrevious>Back</button>
+        <button mat-flat-button style="margin-left: 5px;background-color: deeppink; color: white;"(click)="onSubmit()">Reset</button>
       </div>
-    </mat-step>
-  </form>
+
+      
+
+      <div class="statusMsg" *ngIf="message">{{message}} <button mat-flat-button color="accent" routerLink="/login">Login</button></div>
+
+    </form>
+  </mat-step>
 </mat-horizontal-stepper>
