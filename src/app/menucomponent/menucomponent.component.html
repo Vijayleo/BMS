@@ -1,14 +1,10 @@
 <mat-toolbar color="accent">
   <span><img src="../../assets/logo.png" alt="logo" class="logo-menu"></span>
-  <span class="example-spacer"></span>
-  <button mat-button [matMenuTriggerFor]="menu">Apply Loan</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Educational Loan</button>
-    <button mat-menu-item>Personal/Home Loan</button>
-  </mat-menu>
+  <span class="example-spacer">Banking Management System</span>
+  <button mat-button (click) = "applyLoan()">Apply Loan</button>
   <button mat-button [matMenuTriggerFor]="profilemenu">Profile</button>
   <mat-menu #profilemenu="matMenu">
-    <button mat-menu-item>Update Profile</button>
+    <button mat-menu-item (click) = "updateProfile()">Update Profile</button>
   </mat-menu>
   <button mat-button (click)="logout()">Logout</button>
 </mat-toolbar>

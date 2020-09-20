@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './jwt-authentication.service';
 
 @Injectable({
@@ -10,13 +10,10 @@ export class BasicAuthHtppInterceptorService implements HttpInterceptor {
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-
-    if (sessionStorage.getItem('username') && sessionStorage.getItem('basicauth')) {
-      req = req.clone({
-        setHeaders: {
-          Authorization: sessionStorage.getItem('basicauth')
-        }
-      })
+const token = sessionStorage.getItem('token');
+    if (sessionStorage.getItem('token')) {
+     const headers = new HttpHeaders({'Authorization':token,'Content-Type': 'application/json'});
+      req=req.clone({headers});
     }
 
     return next.handle(req);

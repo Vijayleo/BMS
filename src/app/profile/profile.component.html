@@ -1,0 +1,171 @@
+<app-menucomponent></app-menucomponent>
+<div class="container">
+    <mat-card class="card-container">
+      
+      <div  class="form-container">
+        <div class="header">Basic Details</div>
+        <form [formGroup]="personalFormGroup" (ngSubmit)="updateProfile()">
+          
+            <mat-form-field appearance="outline">
+                <mat-label style="color: rgb(247, 46, 156);">Customer Id</mat-label>
+                <input matInput [ngModel]='dataUser.customerId' formControlName="customerId" class="disableClass">
+            </mat-form-field><br>
+            <mat-form-field appearance="outline">
+                <mat-label  style="color: rgb(247, 46, 156);">Account No</mat-label>
+                <input matInput [ngModel]='dataUser.accountNumber' formControlName="accountNumber" class="disableClass">
+            </mat-form-field><br>
+    
+            <mat-form-field appearance="outline">
+                <mat-label  style="color:rgb(247, 46, 156);">Bank Name</mat-label>
+                <input matInput [ngModel]='dataUser.bankName' formControlName="bankName" class="disableClass">
+            </mat-form-field>
+            <div class="header">Personal Details</div>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="FirstName, Lastname" [ngModel]='dataUser.fullname' formControlName="fullname">
+              </mat-form-field><br>  
+             
+              
+              <div style="padding-top: 5px; padding-bottom: 12px;">
+                <label>Gender: </label>
+                <mat-radio-group aria-labelledby="gender-radio-group-label" formControlName="gender" [ngModel]='dataUser.gender'>
+                  <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders"  
+                    style="margin-left: 5px;" [value]='gender'>
+                    {{gender}}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+        
+              <mat-form-field appearance="fill">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="today" disabled style="color:black" formControlName="dob"  [ngModel]='dataUser.dob'>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+              </mat-form-field><br>
+        
+              <div style="padding-top: 5px; padding-bottom: 12px;">
+                <label>Maritial Status: </label>
+                <mat-radio-group aria-labelledby="mstatus-radio-group-label" formControlName="maritalStatus" [ngModel]='dataUser.maritalStatus'>
+                  <mat-radio-button class="mstatus-radio-button" *ngFor="let mstatus of maritialStatus" 
+                    style="margin-left: 5px;" [value]='mstatus'>
+                    {{mstatus}}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+        
+              <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="Email" formControlName="emailAddress" [ngModel]='dataUser.emailAddress'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Contact No</mat-label>
+                <input matInput placeholder="Contact No" formControlName="contactNo" [ngModel]='dataUser.contactNo'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Guardian Type</mat-label>
+                <input matInput placeholder="Guardian Type" formControlName="guardianType" [ngModel]='dataUser.guardianType'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Guardian Name</mat-label>
+                <input matInput placeholder="Guardian Name"  formControlName="guardianName" [ngModel]='dataUser.guardianName'>
+              </mat-form-field>
+
+              <div class="header">Address Details</div>
+
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Address" formControlName="address" [ngModel]='dataUser.address'></textarea>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Citizenship</mat-label>
+                <input matInput placeholder="Citizenship" formControlName="citizenship" [ngModel]='dataUser.citizenship'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>State</mat-label>
+                <input matInput placeholder="State" formControlName="state" [ngModel]='dataUser.state'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Country" formControlName="country" [ngModel]='dataUser.country'>
+              </mat-form-field>
+
+              <div class="header">Account Details</div>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Account Type</mat-label>
+                <mat-select formControlName="accountType" [ngModel]='dataUser.accountType'>
+                  <mat-option *ngFor="let acctype of accountTypes" [value]='acctype'>
+                    {{acctype}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field><br>
+        
+              <mat-form-field appearance="fill">
+                <mat-label>Registration Date</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="registrationDate" [ngModel]='dataUser.registrationDate'>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field><br>
+        
+        
+              <mat-form-field class="example-full-width">
+                <mat-label>Select Id Proof</mat-label>
+                <mat-select formControlName="idProofType" [ngModel]='dataUser.idProofType' >
+                  <mat-option *ngFor="let idpf of custidProof" [value]='idpf'>
+                    {{idpf}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Document No</mat-label>
+                <input matInput placeholder="Document No" formControlName="idDocNo" [ngModel]='dataUser.idDocNo'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Branch Name</mat-label>
+                <input matInput placeholder="Branch Name" formControlName="branchName" [ngModel]='dataUser.branchName'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Citizen Status</mat-label>
+                <input matInput placeholder="CitizenS tatus" formControlName="citizenStatus"  [ngModel]='dataUser.citizenStatus'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Amount</mat-label>
+                <input matInput placeholder="Amount" formControlName="amount" [ngModel]='dataUser.amount'>
+              </mat-form-field>
+
+              <div class="header">Other Details</div>
+              
+              <mat-form-field>
+                <mat-label>Account Holder Name</mat-label>
+                <input matInput placeholder="Account Holder Name" formControlName="acHolderName" [ngModel]='dataUser.acHolderName'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Account Holder No</mat-label>
+                <input matInput placeholder="Account Holder No" formControlName="acHolderAccNo" [ngModel]='dataUser.acHolderAccNo'>
+              </mat-form-field><br>
+        
+              <mat-form-field>
+                <mat-label>Account Holder Address</mat-label>
+                <input matInput placeholder="Account Holder Address" formControlName="acHolderAddr" [ngModel]='dataUser.acHolderAddr'>
+              </mat-form-field> 
+        
+              <div>
+                <button mat-raised-button color="accent" type="submit" style="margin-top:20px; margin-bottom: 50px;">Update Profile</button>
+              </div>
+
+        </form>
+      </div>
+  </mat-card>
+  </div>
+  

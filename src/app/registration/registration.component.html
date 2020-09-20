@@ -28,7 +28,7 @@
 
       <div style="padding-top: 5px; padding-bottom: 12px;">
         <label>Gender: </label>
-        <mat-radio-group aria-labelledby="gender-radio-group-label" formControlName="gend">
+        <mat-radio-group aria-labelledby="gender-radio-group-label" formControlName="gender">
           <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender"
             style="margin-left: 5px;">
             {{gender}}
@@ -45,7 +45,7 @@
 
       <div style="padding-top: 5px; padding-bottom: 12px;">
         <label>Maritial Status: </label>
-        <mat-radio-group aria-labelledby="mstatus-radio-group-label" formControlName="martStatus">
+        <mat-radio-group aria-labelledby="mstatus-radio-group-label" formControlName="maritalStatus">
           <mat-radio-button class="mstatus-radio-button" *ngFor="let mstatus of maritialStatus" [value]="mstatus"
             style="margin-left: 5px;">
             {{mstatus}}
@@ -55,7 +55,7 @@
 
       <mat-form-field>
         <mat-label>Email Address</mat-label>
-        <input matInput placeholder="Email" formControlName="email">
+        <input matInput placeholder="Email" formControlName="emailAddress">
       </mat-form-field><br>
 
       <mat-form-field>
@@ -65,16 +65,16 @@
 
       <mat-form-field>
         <mat-label>Guardian Type</mat-label>
-        <input matInput placeholder="Guardian Type" formControlName="gtype">
+        <input matInput placeholder="Guardian Type" formControlName="guardianType">
       </mat-form-field><br>
 
       <mat-form-field>
         <mat-label>Guardian Name</mat-label>
-        <input matInput placeholder="Guardian Name" formControlName="gname">
+        <input matInput placeholder="Guardian Name"  formControlName="guardianName">
       </mat-form-field>
 
       <div>
-        <button mat-flat-button color="accent" matStepperNext>Next</button>
+        <button mat-flat-button color="accent"  matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
@@ -132,7 +132,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Registration Date</mat-label>
-        <input matInput [matDatepicker]="picker1" formControlName="regDate">
+        <input matInput [matDatepicker]="picker1" formControlName="registrationDate">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field><br>
@@ -140,7 +140,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Select Id Proof</mat-label>
-        <mat-select formControlName="customerId">
+        <mat-select formControlName="idProofType">
           <mat-option *ngFor="let idpf of custidProof" [value]="idpf">
             {{idpf}}
           </mat-option>
@@ -149,7 +149,7 @@
 
       <mat-form-field style="margin-left:10px">
         <mat-label>Document No</mat-label>
-        <input matInput placeholder="Document No" formControlName="documentNo">
+        <input matInput placeholder="Document No" formControlName="idDocNo">
       </mat-form-field><br>
 
       <mat-form-field>
@@ -195,13 +195,14 @@
 
       <div>
         <button mat-flat-button color="accent" (click)= "goBack(stepper)" matStepperPrevious>Back</button>
-        <button mat-flat-button style="margin-left: 5px;background-color: deeppink; color: white;"(click)="onSubmit()">Reset</button>
+        <button mat-flat-button style="margin-left: 5px;background-color: deeppink; color: white;"(click)="onSubmit()">Submit</button>
       </div>
 
       
 
-      <div class="statusMsg" *ngIf="message">{{message}} <button mat-flat-button color="accent" routerLink="/login">Login</button></div>
+      <!-- <div class="statusMsg" *ngIf="message"><span style="vertical-align: -6px; padding: 15px;">{{message}}</span> <button mat-flat-button color="accent" routerLink="/login">Login</button></div> -->
 
     </form>
   </mat-step>
 </mat-horizontal-stepper>
+

@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { ModuleWithProviders} from "@angular/core";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BasicAuthHtppInterceptorService } from './service/basic-auth-htpp-interceptor-service.service';
 import { MAT_LABEL_GLOBAL_OPTIONS, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatIconRegistry } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -41,13 +42,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MenucomponentComponent } from './menucomponent/menucomponent.component';
-import { BasicAuthHtppInterceptorService } from './service/basic-auth-htpp-interceptor-service.service';
 import { WelcomeComponent } from './welcome/welcome.component';
-
-
+import { MenucomponentComponent } from './menucomponent/menucomponent.component';
+import { ApplyLoanCompComponent } from './apply-loan-comp/apply-loan-comp.component';
+import { ProfileComponent } from './profile/profile.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +54,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
     LoginComponent,
     RegistrationComponent,
     MenucomponentComponent,
-    WelcomeComponent
-  ],
+    WelcomeComponent,
+    ApplyLoanCompComponent,
+    ProfileComponent,
+    DialogComponent
+    
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -64,6 +67,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FormsModule,
     ReactiveFormsModule,
 
+    
+    HttpClientModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatButtonModule,
@@ -96,8 +101,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
-    MatNativeDateModule,
-    HttpClientModule
+    MatNativeDateModule
   ],
   providers: [
     {  

@@ -1,0 +1,52 @@
+.container
+{
+    width: 100%;
+    height: 130%;
+    background-color: rgb(241, 238, 238);
+}
+
+.card-container
+{
+    flex: 1 1 auto;
+    width:80%;
+    margin-left:9%;
+    
+}
+
+.mat-form-field
+{
+    width: 40%;
+}
+
+.content
+{
+    margin-left: 200px;
+    
+}
+.header
+{
+    font-size: large;
+    border-bottom: 1px dotted rgb(107, 107, 107);
+    width: 85%;
+    margin-top: 30px;
+    text-align: right;
+}
+.bodyContent
+{
+    margin-top: 30px;
+   /* margin-left:50px;*/
+}
+
+.bodyContent:last-child
+{
+    margin-bottom: 30px;
+}
+.eloanContent
+{
+    margin-top: 30px;
+}
+.phLoanContent
+{
+    margin-top: 30px;
+}
+

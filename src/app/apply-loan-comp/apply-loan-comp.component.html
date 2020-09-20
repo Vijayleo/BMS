@@ -1,0 +1,144 @@
+<app-menucomponent></app-menucomponent>
+<div class="container">
+  <mat-card class="card-container">
+
+    <div class="content">
+      <div class="header">Loan Details</div>
+      <div class="bodyContent">
+        <!--***************************** Basic Form *******************************-->
+        <form [formGroup]="basicFormGroup">
+          <mat-form-field class="example-full-width">
+            <mat-label>Loan Type</mat-label>
+            <mat-select formControlName="loanType" (selectionChange)="onChange($event)">
+              <mat-option *ngFor="let lType of loanTypes" [value]="lType">
+                {{lType}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br>
+
+          <mat-form-field>
+            <mat-label>Loan Amount</mat-label>
+            <input matInput placeholder="Loan Amount" formControlName="loanAmt">
+          </mat-form-field><br>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Loan Apply Date</mat-label>
+            <input matInput [matDatepicker]="picker1" [min]="today" formControlName="loanApplyDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field><br>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Loan Issue Date</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="loanIssueDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field><br>
+
+          <mat-form-field>
+            <mat-label>Rate of Interest</mat-label>
+            <input matInput placeholder="Rate of Interest (%)" style="color:black" formControlName="rateOfInterest">
+          </mat-form-field><br>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Duration of the Loan</mat-label>
+            <mat-select formControlName="duration">
+              <mat-option *ngFor="let year of years" [value]="year">
+                {{year}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br>
+
+          <!--****************************** Education Loan *****************************-->
+          <div *ngIf="showHide1">
+            <div class="header">Personal Details</div>
+            <div class="eloanContent">
+              <div formGroupName="eLoanFormGroup">
+
+                <mat-form-field>
+                  <mat-label>Course Fee</mat-label>
+                  <input matInput placeholder="Course Fee" formControlName="coursefee">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Course</mat-label>
+                  <input matInput placeholder="Course" formControlName="course">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Father Name</mat-label>
+                  <input matInput placeholder="Father Name" formControlName="fathername">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Father Occupation</mat-label>
+                  <input matInput placeholder="Father Occupation" formControlName="fatherOccupation">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Father's Total Exp</mat-label>
+                  <input matInput placeholder="Father's Total Exp" formControlName="fatherExp">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Father's Exp with Current company</mat-label>
+                  <input matInput placeholder="Father's Exp with Current company"
+                    formControlName="fatherExpwithCompany">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Ration Card No</mat-label>
+                  <input matInput placeholder="Ration Card No" formControlName="rationCard">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Annual Income</mat-label>
+                  <input matInput placeholder="Annual Income" formControlName="eannualIncome">
+                </mat-form-field><br>
+              </div>
+            </div>
+          </div>
+          <!--*********************************Personal / Home  Loan*********************************************-->
+          <div *ngIf="showHide2">
+            <div class="header">Personal Details</div>
+            <div class="phLoanContent">
+              <div formGroupName="phLoanFormGroup">
+
+                <mat-form-field>
+                  <mat-label>Annual Income</mat-label>
+                  <input matInput placeholder="Annual Income" formControlName="phannualIncome">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Company Name</mat-label>
+                  <input matInput placeholder="Company Name" formControlName="companyName">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Designation</mat-label>
+                  <input matInput placeholder="Designation" formControlName="designation">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Total Exp</mat-label>
+                  <input matInput placeholder="Total Exp" formControlName="totalExp">
+                </mat-form-field><br>
+
+                <mat-form-field>
+                  <mat-label>Exp with Current company</mat-label>
+                  <input matInput placeholder="Exp with Current company" formControlName="expWithCompany">
+                </mat-form-field><br>
+              </div>
+            </div>
+          </div>
+
+
+          <div>
+            <button mat-raised-button color="accent" type="submit" (click)="applyLoan()" style="margin-top:20px">Apply
+              Loan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-card>
+</div>

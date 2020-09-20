@@ -18,4 +18,13 @@ export class MenucomponentComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  applyLoan()
+  {
+    this.router.navigate(['applyLoan']);
+  }
+  updateProfile()
+  {
+    this.router.navigate(['updateProfile']);
+  }
+
 }
