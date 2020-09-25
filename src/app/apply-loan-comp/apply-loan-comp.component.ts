@@ -10,17 +10,6 @@ export interface DialogData {
   msg: string;
 }
 
-export class loanBasic {
-  constructor(
-    loanType: String,
-    loanAmt: String,
-    loanApplyDate: Date,
-    loanIssueDate: Date,
-    rateOfInterest: String,
-    duration: String
-  ) { }
-}
-
 
 @Component({
   selector: 'app-apply-loan-comp',
@@ -173,17 +162,4 @@ export class ApplyLoanCompComponent implements OnInit {
 
   }
 
-}
-@Component({
-  selector: 'dialog-elements-example-dialog',
-  templateUrl: 'dialog-elements-example-dialog.html',
-})
-export class DialogElementsExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogElementsExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
-
-  close() {
-    this.dialogRef.close();
-  }
 }
