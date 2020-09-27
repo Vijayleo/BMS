@@ -8,7 +8,7 @@
 
 <mat-horizontal-stepper linear #stepper>
   <mat-step [stepControl]="personalFormGroup" [editable]="isEditable">
-    <form [formGroup]="personalFormGroup">
+    <form [formGroup]="personalFormGroup" id ="personalFormGroup">
       <ng-template matStepLabel>Personal Details</ng-template>
 
       <mat-form-field>
@@ -81,8 +81,8 @@
 
 
 
-  <mat-step [stepControl]="addressFormGroup" [editable]="isEditable">
-    <form [formGroup]="addressFormGroup">
+  <mat-step [stepControl]="addressFormGroup"  [editable]="isEditable">
+    <form [formGroup]="addressFormGroup" id ='addressFormGroup'>
       <ng-template matStepLabel>Address Details</ng-template>
 
       <mat-form-field>
@@ -118,7 +118,7 @@
 
 
   <mat-step [stepControl]="accountFormGroup" [editable]="isEditable">
-    <form [formGroup]="accountFormGroup">
+    <form [formGroup]="accountFormGroup" id ="accountFormGroup">
       <ng-template matStepLabel>Account Details</ng-template>
 
       <mat-form-field class="example-full-width">
@@ -176,7 +176,7 @@
 
 
   <mat-step [stepControl]="otherFormGroup" [editable]="isEditable">
-    <form [formGroup]="otherFormGroup">
+    <form [formGroup]="otherFormGroup" id ="otherFormGroup">
       <ng-template matStepLabel>Other Details</ng-template>
       <mat-form-field>
         <mat-label>Account Holder Name</mat-label>

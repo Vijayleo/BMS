@@ -4,6 +4,7 @@ import { DialogData } from '../apply-loan-comp/apply-loan-comp.component';
 
 @Component({
   selector: 'app-dialog',
+  
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css']
 })

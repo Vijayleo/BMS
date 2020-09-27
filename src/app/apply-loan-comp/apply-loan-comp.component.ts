@@ -8,6 +8,7 @@ import { Loan } from './model/loan';
 
 export interface DialogData {
   msg: string;
+  refNo: string;
 }
 
 
@@ -116,27 +117,16 @@ export class ApplyLoanCompComponent implements OnInit {
 
     console.log(this.loan)
 
-    this.applyLoanService.applyLoan(JSON.stringify(this.loan));
-
-   
-      this.applyLoanService.applyLoan(JSON.stringify(this.loan)).subscribe(
-        response => {
-          this.msg = "Loan Applied Successfully"
-          this.dialog.open(DialogComponent, {
-            width: '500px',
-            data: { msg: this.msg }
-          });
-        },
-        error => {
-          this.msg = "Something Went Wrong. Please Contact Support"
-          this.dialog.open(DialogComponent, {
-            width: '500px',
-            data: { msg: this.msg }
-          });
-        }
-
-      )
-  
+        
+          if(this.basicFormGroup.valid)
+          {
+            
+            if(loanType==="Education Loan" && obj2.valid)
+            this.customSubmit()
+            else if(loanType==="Personal / Home Loan" && obj3.valid)
+            this.customSubmit()
+            else{}
+          }
 
 
   }
@@ -161,5 +151,26 @@ export class ApplyLoanCompComponent implements OnInit {
     }
 
   }
+
+  customSubmit()
+  {
+    this.applyLoanService.applyLoan(JSON.stringify(this.loan)).subscribe(
+      response => {
+        this.msg = "Loan Applied Successfully"
+        this.dialog.open(DialogComponent, {
+          width: '500px',
+          data: { msg: this.msg }
+        });
+      },
+      error => {
+        this.msg = "Something Went Wrong. Please Contact Support"
+        this.dialog.open(DialogComponent, {
+          width: '500px',
+          data: { msg: this.msg }
+        });
+      })
+  }
+
+
 
 }

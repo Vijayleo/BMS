@@ -1,4 +1,5 @@
-<h1 mat-dialog-title style="text-align: center;">{{data.msg}}</h1>
+<h1 mat-dialog-title id="dataMsg" style="text-align: center;">{{data.msg}}</h1>
+<mat-dialog-content *ngIf="data.refNo" style="text-align: center;">Your Reference No is : <span style="color:green">{{data.refNo}}</span></mat-dialog-content>
 <div mat-dialog-actions style="text-align: center;">
     <button mat-flat-button color="accent" mat-dialog-close  (click)="close()">Close</button>
   <!-- <button mat-flat-button color="accent" mat-dialog-close style="color:white;background-color: green;border: 0; border-radius: 5px; padding: 7px; cursor: pointer;" (click)="close()">Close</button> -->

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { WelcomeComponent } from './welcome.component';
 
@@ -19,7 +20,15 @@ describe('WelcomeComponent', () => {
     fixture.detectChanges();
   });
 
+  
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Should have welocome Message', () => {
+    let debug = fixture.debugElement.query(By.css('h3'));
+    let welcomeMsg = debug.nativeElement;
+ 
+    expect(welcomeMsg.innerHTML).toContain('Welcome to Banking Manangement System');
   });
 });

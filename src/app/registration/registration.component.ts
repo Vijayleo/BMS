@@ -24,6 +24,7 @@ export class RegistrationComponent implements OnInit {
   registrationFormGroup: FormGroup;
 
   register: User;
+  userData: User;
   genders = ['Male', 'Female']
   maritialStatus = ['Married', 'Unmarried']
   today = new Date()
@@ -33,6 +34,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder, private registerService: RegistrationService, private router: Router,public dialog: MatDialog) {
     this.today.setDate(this.today.getDate());
+    this.userData = new User('', '', '', '', '', '', '', '', '', '', '', '', 0, new Date(), new Date(), '', '', '', 0, '', '', '', '', '', '', '', '');
   }
 
 
@@ -87,19 +89,27 @@ export class RegistrationComponent implements OnInit {
 
       this.registerService.registerUser(this.register).subscribe(
         response => {
-
+          this.userData = response
           this.message = "User Registration Successfull"
-          this.dialog.open(DialogComponent, {
+          const dialogRef = this.dialog.open(DialogComponent, {
             width: '500px',
-            data: { msg: this.message }
+            data: { msg: this.message, refNo: this.userData.customerId }
           });
+          dialogRef.afterClosed().subscribe((result) => {
+           this.router.navigate(['login']);
+           });
+		  
         },
         error => {
           this.message = "Something Went Wrong. Please Contact Support"
-          this.dialog.open(DialogComponent, {
+        const dialogRef =  this.dialog.open(DialogComponent, {
             width: '500px',
             data: { msg: this.message }
           });
+          dialogRef.afterClosed().subscribe((result) => {
+           this.router.navigate(['login']);
+          });
+          
         }
 
       )

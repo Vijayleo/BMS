@@ -30,7 +30,7 @@
                 <label>Gender: </label>
                 <mat-radio-group aria-labelledby="gender-radio-group-label" formControlName="gender" [ngModel]='dataUser.gender'>
                   <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders"  
-                    style="margin-left: 5px;" [value]='gender'>
+                    style="margin-left: 5px;" [value]='gender' >
                     {{gender}}
                   </mat-radio-button>
                 </mat-radio-group>

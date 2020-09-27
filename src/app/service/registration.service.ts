@@ -12,7 +12,7 @@ export class RegistrationService {
 
   registerUser(user)
   {
-    return this.http.post(`http://localhost:8080/register`,user)
+    return this.http.post<User>(`http://localhost:8080/register`,user)
   }
 
   getUser(username)
