@@ -17,7 +17,7 @@
                        <mat-label>Password</mat-label>
                        <input  matInput type="password" placeholder="Password" name="password" formControlName="password"  [ngModel]="data.password" >
                     </mat-form-field><br>
-                    <span style ="color:red; font-weight: bold;" *ngIf="errorMsg">{{errorMsg}}</span><br>
+                    <span style ="color:red; font-weight: bold;" class="errorMsg" *ngIf="errorMsg">{{errorMsg}}</span><br>
                     <mat-card-actions>
                       <button mat-raised-button color="accent" class='login-btn' type="submit">Login</button>
                     </mat-card-actions>

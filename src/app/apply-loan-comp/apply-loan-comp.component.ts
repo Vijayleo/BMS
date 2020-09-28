@@ -40,8 +40,8 @@ export class ApplyLoanCompComponent implements OnInit {
     this.basicFormGroup = this._formBuilder.group({
       loanType: new FormControl('', [Validators.required]),
       loanAmt: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[1-9])[0-9]*[.,]?[0-9]{1,2}$')]),
-      loanApplyDate: new FormControl('', [Validators.required]),
-      loanIssueDate: new FormControl('', [Validators.required]),
+      loanApplyDate: new FormControl(''),
+      loanIssueDate: new FormControl(''),
       rateOfInterest: new FormControl({ value: '', disabled: true }, [Validators.required]),
       duration: new FormControl('', [Validators.required]),
 
@@ -118,15 +118,15 @@ export class ApplyLoanCompComponent implements OnInit {
     console.log(this.loan)
 
         
-          if(this.basicFormGroup.valid)
-          {
-            
+          
             if(loanType==="Education Loan" && obj2.valid)
             this.customSubmit()
             else if(loanType==="Personal / Home Loan" && obj3.valid)
             this.customSubmit()
-            else{}
-          }
+            else{
+              this.customSubmit()
+            }
+          
 
 
   }

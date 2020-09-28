@@ -44,7 +44,7 @@ export class RegistrationComponent implements OnInit {
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       gender: new FormControl('Male', Validators.required),
-      dob: new FormControl('', Validators.required),
+      dob: new FormControl(''),
       maritalStatus: new FormControl('Unmarried', Validators.required),
       emailAddress: new FormControl('', Validators.compose([Validators.required, Validators.email])),
       contactNo: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
@@ -63,7 +63,7 @@ export class RegistrationComponent implements OnInit {
       citizenStatus: new FormControl('', Validators.required),
       amount: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])),
       idDocNo: new FormControl('', Validators.required),
-      registrationDate: new FormControl('', Validators.required),
+      registrationDate: new FormControl(''),
       idProofType: new FormControl('', Validators.required)
     });
     this.otherFormGroup = this._formBuilder.group({

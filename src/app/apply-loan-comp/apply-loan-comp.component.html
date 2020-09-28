@@ -23,14 +23,14 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Loan Apply Date</mat-label>
-            <input matInput [matDatepicker]="picker1" [min]="today" formControlName="loanApplyDate">
+            <input matInput [matDatepicker]="picker1" [min]="today" formControlName="loanApplyDate" id ="date1">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field><br>
 
           <mat-form-field appearance="fill">
             <mat-label>Loan Issue Date</mat-label>
-            <input matInput [matDatepicker]="picker2" formControlName="loanIssueDate">
+            <input matInput [matDatepicker]="picker2" formControlName="loanIssueDate" id ="date2">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field><br>
@@ -134,7 +134,7 @@
 
 
           <div>
-            <button mat-raised-button color="accent" type="submit" (click)="applyLoan()" style="margin-top:20px">Apply
+            <button mat-raised-button color="accent" type="submit" id="apploan" (click)="applyLoan()" style="margin-top:20px">Apply
               Loan</button>
           </div>
         </form>

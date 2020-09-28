@@ -38,7 +38,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Date of Birth</mat-label>
-        <input matInput [matDatepicker]="picker" [max]="today" disabled style="color:black" formControlName="dob">
+        <input matInput [matDatepicker]="picker" [max]="today" style="color:black" formControlName="dob" id ="dob">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker disabled="false"></mat-datepicker>
       </mat-form-field><br>
@@ -74,7 +74,7 @@
       </mat-form-field>
 
       <div>
-        <button mat-flat-button color="accent"  matStepperNext>Next</button>
+        <button mat-flat-button color="accent"  id="1" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
@@ -109,7 +109,7 @@
 
       <div>
         <button mat-flat-button color="accent" (click)= "goBack(stepper)" matStepperPrevious>Back</button>
-        <button mat-flat-button color="accent"  style="margin-left: 5px;" matStepperNext>Next</button>
+        <button mat-flat-button color="accent"  id="2" style="margin-left: 5px;" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
@@ -132,7 +132,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Registration Date</mat-label>
-        <input matInput [matDatepicker]="picker1" formControlName="registrationDate">
+        <input matInput [matDatepicker]="picker1" formControlName="registrationDate" id="regDate">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field><br>
@@ -169,7 +169,7 @@
 
       <div>
         <button mat-flat-button color ="accent" (click)= "goBack(stepper)" matStepperPrevious>Back</button>
-        <button mat-flat-button color ="accent" style="margin-left: 5px;" matStepperNext>Next</button>
+        <button mat-flat-button color ="accent" id="3" style="margin-left: 5px;" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
@@ -195,7 +195,7 @@
 
       <div>
         <button mat-flat-button color="accent" (click)= "goBack(stepper)" matStepperPrevious>Back</button>
-        <button mat-flat-button style="margin-left: 5px;background-color: deeppink; color: white;"(click)="onSubmit()">Submit</button>
+        <button mat-flat-button id="4" style="margin-left:  5px;background-color: deeppink; color: white;"(click)="onSubmit()">Submit</button>
       </div>
 
       
