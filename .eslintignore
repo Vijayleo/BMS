@@ -1,0 +1,5 @@
+package.json
+package-lock.json
+dist
+protractor.conf.js
+karma.conf.js

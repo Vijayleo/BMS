@@ -6,25 +6,17 @@ import { Router } from '@angular/router';
   templateUrl: './menucomponent.component.html',
   styleUrls: ['./menucomponent.component.css']
 })
-export class MenucomponentComponent implements OnInit {
+export class MenucomponentComponent {
+  constructor(private router: Router) {}
 
-  constructor(private router:Router) { }
-
-  ngOnInit(): void {
-  }
-
-  logout()
-  {
+  logout() {
     this.router.navigate(['login']);
   }
 
-  applyLoan()
-  {
+  applyLoan() {
     this.router.navigate(['applyLoan']);
   }
-  updateProfile()
-  {
+  updateProfile() {
     this.router.navigate(['updateProfile']);
   }
-
 }

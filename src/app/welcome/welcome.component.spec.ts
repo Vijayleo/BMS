@@ -9,9 +9,8 @@ describe('WelcomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WelcomeComponent ]
-    })
-    .compileComponents();
+      declarations: [WelcomeComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -20,15 +19,16 @@ describe('WelcomeComponent', () => {
     fixture.detectChanges();
   });
 
-  
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   it('Should have welocome Message', () => {
-    let debug = fixture.debugElement.query(By.css('h3'));
-    let welcomeMsg = debug.nativeElement;
- 
-    expect(welcomeMsg.innerHTML).toContain('Welcome to Banking Manangement System');
+    const debug = fixture.debugElement.query(By.css('h3'));
+    const welcomeMsg = debug.nativeElement;
+
+    expect(welcomeMsg.innerHTML).toContain(
+      'Welcome to Banking Manangement System'
+    );
   });
 });

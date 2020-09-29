@@ -26,12 +26,20 @@ describe('ApplyLoanCompComponent', () => {
       imports: [
         HttpClientModule,
         RouterTestingModule,
-        FormsModule, ReactiveFormsModule, MatDialogModule, MatSelectModule, MatFormFieldModule, MatInputModule, BrowserAnimationsModule, MatCardModule, MatButtonModule, MatDatepickerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDatepickerModule,
         MatNativeDateModule
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -44,28 +52,25 @@ describe('ApplyLoanCompComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('Form invalid when empty', async () => {
     expect(component.basicFormGroup.valid).toBeFalsy();
   });
 
   it('Loan type field validity', async () => {
-    let loanType = component.basicFormGroup.controls["loanType"]
+    const loanType = component.basicFormGroup.controls['loanType'];
     expect(loanType.valid).toBeFalsy();
 
-    loanType.setValue("");
+    loanType.setValue('');
     expect(loanType.hasError('required')).toBeTruthy();
   });
 
-
   it('Loan type option selection validation', async () => {
     fixture.detectChanges();
-    let loanType = component.basicFormGroup.controls["loanType"]
-    loanType.setValue("Education Loan");
-
+    const loanType = component.basicFormGroup.controls['loanType'];
+    loanType.setValue('Education Loan');
 
     // let select: HTMLSelectElement = fixture.debugElement.query(By.css('.mat-select')).nativeElement;
-    // select.setEl("option","Education Loan");    
+    // select.setEl("option","Education Loan");
     // select.value = select.options[0].value;
     // await select.dispatchEvent(new Event('change'));
     // fixture.detectChanges();
@@ -73,14 +78,10 @@ describe('ApplyLoanCompComponent', () => {
     //   let text = select.options[select.selectedIndex].label;
     //   console.log(text)
     expect(loanType.value).toBe('Education Loan');
-  })
-
+  });
 
   it('Apply Loan button action validation', async () => {
-
-
     component.loanTypes = ['Education Loan', 'Personal / Home Loan'];
-
 
     const debugElement = fixture.debugElement;
     // open options dialog
@@ -88,60 +89,47 @@ describe('ApplyLoanCompComponent', () => {
     await matSelect.click();
     await fixture.detectChanges();
     // select the first option (use queryAll if you want to chose an option)
-    const matOption = debugElement.query(By.css('.mat-option-text')).nativeElement;
+    const matOption = debugElement.query(By.css('.mat-option-text'))
+      .nativeElement;
     await matOption.click();
     await fixture.detectChanges();
 
-
     component.basicFormGroup.patchValue({
+      loanAmt: 5000,
+      loanApplyDate: new Date(2020, 10, 10),
+      loanIssueDate: new Date(2020, 10, 10),
+      duration: '5'
+    });
+    component.basicFormGroup.controls['eLoanFormGroup'].patchValue({
+      coursefee: '6000',
+      course: 'test',
+      fathername: 'Test',
+      fatherOccupation: 'Test',
+      fatherExp: '2',
+      fatherExpwithCompany: '1',
+      rationCard: '8544564sd',
+      eannualIncome: 'Test'
+    });
 
-        loanAmt: 5000,
-        loanApplyDate: new Date(2020, 10, 10),
-        loanIssueDate: new Date(2020, 10, 10),
-        duration: "5",
-      
-      });
-      component.basicFormGroup.controls['eLoanFormGroup'].patchValue
-      ({
-        coursefee: "6000",
-        course: "test",
-        fathername: "Test",
-        fatherOccupation: "Test",
-        fatherExp: "2",
-        fatherExpwithCompany: "1",
-        rationCard: "8544564sd",
-        eannualIncome: "Test",
-      });
-      
-      
-      component.basicFormGroup.controls['phLoanFormGroup'].patchValue
-      ({
-         
-        phannualIncome: "",
-        companyName: "",
-        designation: "",
-        totalExp: "",
-        expWithCompany: ""
-      })
-   
+    component.basicFormGroup.controls['phLoanFormGroup'].patchValue({
+      phannualIncome: '',
+      companyName: '',
+      designation: '',
+      totalExp: '',
+      expWithCompany: ''
+    });
 
-      await fixture.detectChanges();
+    await fixture.detectChanges();
 
-      const stepContent = document.getElementsByClassName(
-        'loanClass'
-      );
+    const stepContent = document.getElementsByClassName('loanClass');
 
-      const stepFourContent = stepContent[0].getElementsByTagName('button');
-      await stepFourContent[0].dispatchEvent(new MouseEvent('click'));
-      await fixture.detectChanges();
-      await fixture.whenStable().then(() => {
-       expect( component.basicFormGroup.controls['phLoanFormGroup'].valid).toBeFalsy();
-    
-      });
-
-    })
-
-
-
-
+    const stepFourContent = stepContent[0].getElementsByTagName('button');
+    await stepFourContent[0].dispatchEvent(new MouseEvent('click'));
+    await fixture.detectChanges();
+    await fixture.whenStable().then(() => {
+      expect(
+        component.basicFormGroup.controls['phLoanFormGroup'].valid
+      ).toBeFalsy();
+    });
   });
+});

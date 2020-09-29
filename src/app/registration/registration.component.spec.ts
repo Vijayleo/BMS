@@ -32,7 +32,8 @@ describe('RegistrationComponent', () => {
       imports: [
         HttpClientModule,
         RouterTestingModule,
-        FormsModule, ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
         MatDialogModule,
         MatSelectModule,
         MatFormFieldModule,
@@ -49,8 +50,7 @@ describe('RegistrationComponent', () => {
         MatDialogModule
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -64,33 +64,28 @@ describe('RegistrationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-
-
   it('Form invalid when empty', async () => {
     expect(component.personalFormGroup.valid).toBeFalsy();
   });
 
   it('Name field validity', async () => {
-    let name = component.personalFormGroup.controls["fullname"]
+    const name = component.personalFormGroup.controls['fullname'];
     expect(name.valid).toBeFalsy();
 
-    name.setValue("");
+    name.setValue('');
     expect(name.hasError('required')).toBeTruthy();
 
-    name.setValue("58");
-    let errors = {}
+    name.setValue('58');
+    let errors = {};
     errors = name.errors || {};
     expect(name.hasError('pattern')).toBeTruthy();
-
   });
 
-
   it('Radio option field validity', async () => {
-    let Gender = component.personalFormGroup.controls["gender"]
-    Gender.setValue("Female");
-    expect(Gender.value).toBe("Female");
-  })
-
+    const Gender = component.personalFormGroup.controls['gender'];
+    Gender.setValue('Female');
+    expect(Gender.value).toBe('Female');
+  });
 
   it('should show the proper number of stepper containers as there are steps', () => {
     const expectedNumberOfSteps = 4;
@@ -108,8 +103,7 @@ describe('RegistrationComponent', () => {
     const stepFirstContent = stepContent[0].children;
     expect(stepFirstContent[0].nodeName).toEqual('FORM');
     expect(stepFirstContent[0].id).toEqual('personalFormGroup');
-
-  })
+  });
 
   it('Check Next button click validation for form group 1', () => {
     const stepContent = document.getElementsByClassName(
@@ -119,16 +113,13 @@ describe('RegistrationComponent', () => {
     const stepOneButton = stepContent[0].getElementsByTagName('button');
     stepOneButton[0].dispatchEvent(new MouseEvent('click'));
     fixture.detectChanges();
-    let Password = component.personalFormGroup.controls["password"]
-    let name = component.personalFormGroup.controls["fullname"]
+    const Password = component.personalFormGroup.controls['password'];
+    const name = component.personalFormGroup.controls['fullname'];
 
     expect(Password.hasError('required')).toBeTruthy();
     expect(name.hasError('required')).toBeTruthy();
     expect(component.personalFormGroup.valid).toBeFalsy();
-
-  })
-
-
+  });
 
   it('Check second header form group', () => {
     const stepContent = document.getElementsByClassName(
@@ -138,9 +129,7 @@ describe('RegistrationComponent', () => {
     const stepTwoContent = stepContent[1].children;
     expect(stepTwoContent[0].nodeName).toEqual('FORM');
     expect(stepTwoContent[0].id).toEqual('addressFormGroup');
-
-  })
-
+  });
 
   it('Check third header form group', () => {
     const stepContent = document.getElementsByClassName(
@@ -150,8 +139,7 @@ describe('RegistrationComponent', () => {
     const stepThirdContent = stepContent[2].children;
     expect(stepThirdContent[0].nodeName).toEqual('FORM');
     expect(stepThirdContent[0].id).toEqual('accountFormGroup');
-
-  })
+  });
 
   it('Check fourth header form group', () => {
     const stepContent = document.getElementsByClassName(
@@ -161,9 +149,7 @@ describe('RegistrationComponent', () => {
     const stepFourthContent = stepContent[3].children;
     expect(stepFourthContent[0].nodeName).toEqual('FORM');
     expect(stepFourthContent[0].id).toEqual('otherFormGroup');
-
-  })
-
+  });
 
   it('Check Next button click validation for form group 2', () => {
     const stepContent = document.getElementsByClassName(
@@ -171,21 +157,19 @@ describe('RegistrationComponent', () => {
     );
 
     const stepSecondContent = stepContent[1].getElementsByTagName('button');
-    Array.from(stepSecondContent).forEach(button => {
-
+    Array.from(stepSecondContent).forEach((button) => {
       if (button.type === 'submit') {
         button.dispatchEvent(new MouseEvent('click'));
       }
     });
     fixture.detectChanges();
-    let address = component.addressFormGroup.controls["address"]
-    let citizenship = component.addressFormGroup.controls["citizenship"]
+    const address = component.addressFormGroup.controls['address'];
+    const citizenship = component.addressFormGroup.controls['citizenship'];
 
     expect(address.hasError('required')).toBeTruthy();
     expect(citizenship.hasError('required')).toBeTruthy();
     expect(component.addressFormGroup.valid).toBeFalsy();
-
-  })
+  });
 
   it('Check Next button click validation for form group 3', () => {
     const stepContent = document.getElementsByClassName(
@@ -193,21 +177,19 @@ describe('RegistrationComponent', () => {
     );
 
     const stepThirdContent = stepContent[2].getElementsByTagName('button');
-    Array.from(stepThirdContent).forEach(button => {
-
+    Array.from(stepThirdContent).forEach((button) => {
       if (button.type === 'submit') {
         button.dispatchEvent(new MouseEvent('click'));
       }
     });
     fixture.detectChanges();
-    let accountType = component.accountFormGroup.controls["accountType"]
-    let docid = component.accountFormGroup.controls["idDocNo"]
+    const accountType = component.accountFormGroup.controls['accountType'];
+    const docid = component.accountFormGroup.controls['idDocNo'];
 
     expect(accountType.hasError('required')).toBeTruthy();
     expect(docid.hasError('required')).toBeTruthy();
     expect(component.accountFormGroup.valid).toBeFalsy();
-
-  })
+  });
 
   it('Check Submit button click validation for form group 4', () => {
     const stepContent = document.getElementsByClassName(
@@ -215,72 +197,63 @@ describe('RegistrationComponent', () => {
     );
 
     const stepFourContent = stepContent[2].getElementsByTagName('button');
-    Array.from(stepFourContent).forEach(button => {
-
+    Array.from(stepFourContent).forEach((button) => {
       if (button.type === 'submit') {
         button.dispatchEvent(new MouseEvent('click'));
       }
     });
 
     fixture.detectChanges();
-    let acHolderName = component.otherFormGroup.controls["acHolderName"]
-    let acHolderAccNo = component.otherFormGroup.controls["acHolderAccNo"]
+    const acHolderName = component.otherFormGroup.controls['acHolderName'];
+    const acHolderAccNo = component.otherFormGroup.controls['acHolderAccNo'];
 
     expect(acHolderName.hasError('required')).toBeTruthy();
     expect(acHolderAccNo.hasError('required')).toBeTruthy();
     expect(component.otherFormGroup.valid).toBeFalsy();
-
-  })
-
+  });
 
   it('Submit button click', () => {
-
-
     component.personalFormGroup.patchValue({
-      fullname: "dhanu",
-      username: "dhanu",
-      password: "dhanu",
-      emailAddress: "dhanu@sc.com",
-      gender: "Male",
-      maritalStatus: "Unmarried",
+      fullname: 'dhanu',
+      username: 'dhanu',
+      password: 'dhanu',
+      emailAddress: 'dhanu@sc.com',
+      gender: 'Male',
+      maritalStatus: 'Unmarried',
       contactNo: 9564985645,
       dob: new Date(1988, 5, 22),
-      guardianType: "Test",
-      guardianName: "Test"
+      guardianType: 'Test',
+      guardianName: 'Test'
     });
 
     component.addressFormGroup.patchValue({
-      address: "Test",
-      citizenship: "Test",
-      state: "Test",
-      country: "Test"
+      address: 'Test',
+      citizenship: 'Test',
+      state: 'Test',
+      country: 'Test'
     });
 
     component.addressFormGroup.patchValue({
       registrationDate: new Date(2020, 10, 22),
-      accountType: "Savings",
-      branchName: "Test",
-      citizenStatus: "Minor",
+      accountType: 'Savings',
+      branchName: 'Test',
+      citizenStatus: 'Minor',
       amount: 5000,
-      idProofType: "PAN Card",
-      idDocNo: "asdf5641654ad",
-
+      idProofType: 'PAN Card',
+      idDocNo: 'asdf5641654ad'
     });
     component.otherFormGroup.patchValue({
-      acHolderName: "Test",
-      acHolderAccNo: "Test",
-      acHolderAddr: "Test",
+      acHolderName: 'Test',
+      acHolderAccNo: 'Test',
+      acHolderAddr: 'Test'
     });
-
-
 
     const stepContent = document.getElementsByClassName(
       'mat-horizontal-stepper-content'
     );
 
     const stepFourContent = stepContent[2].getElementsByTagName('button');
-    Array.from(stepFourContent).forEach(button => {
-
+    Array.from(stepFourContent).forEach((button) => {
       if (button.type === 'submit') {
         button.dispatchEvent(new MouseEvent('click'));
       }
@@ -290,7 +263,5 @@ describe('RegistrationComponent', () => {
     fixture.whenStable().then(() => {
       expect(component.otherFormGroup.valid).toBeTruthy();
     });
-
-  })
-
+  });
 });

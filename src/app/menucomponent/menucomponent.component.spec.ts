@@ -19,23 +19,26 @@ describe('MenucomponentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenucomponentComponent ],
-      imports:[
+      declarations: [MenucomponentComponent],
+      imports: [
         HttpClientModule,
         RouterTestingModule,
-        FormsModule,ReactiveFormsModule,MatToolbarModule,  BrowserDynamicTestingModule,MatListModule,MatButtonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        BrowserDynamicTestingModule,
+        MatListModule,
+        MatButtonModule,
         MatMenuModule
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MenucomponentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-   
   });
 
   it('should create', () => {
@@ -43,22 +46,26 @@ describe('MenucomponentComponent', () => {
   });
 
   it('should have button Apply Loan', () => {
-     const fixr = fixture.debugElement.queryAll(By.css("button")).find(buttonEl => buttonEl.nativeElement.textContent==='Apply Loan');
-      console.log(fixr.nativeElement.innerText)
-     expect(fixr.nativeElement.innerText).toContain('Apply Loan');
+    const fixr = fixture.debugElement
+      .queryAll(By.css('button'))
+      .find((buttonEl) => buttonEl.nativeElement.textContent === 'Apply Loan');
+    console.log(fixr.nativeElement.innerText);
+    expect(fixr.nativeElement.innerText).toContain('Apply Loan');
   });
 
   it('should have button Profile', () => {
-    const fixr = fixture.debugElement.queryAll(By.css("button")).find(buttonEl => buttonEl.nativeElement.textContent==='Profile');
-      console.log(fixr.nativeElement.innerText)
-     expect(fixr.nativeElement.innerText).toContain('Profile');
+    const fixr = fixture.debugElement
+      .queryAll(By.css('button'))
+      .find((buttonEl) => buttonEl.nativeElement.textContent === 'Profile');
+    console.log(fixr.nativeElement.innerText);
+    expect(fixr.nativeElement.innerText).toContain('Profile');
   });
 
   it('should have button Logout', () => {
-    const fixr = fixture.debugElement.queryAll(By.css("button")).find(buttonEl => buttonEl.nativeElement.textContent==='Logout');
-      console.log(fixr.nativeElement.innerText)
-     expect(fixr.nativeElement.innerText).toContain('Logout');
+    const fixr = fixture.debugElement
+      .queryAll(By.css('button'))
+      .find((buttonEl) => buttonEl.nativeElement.textContent === 'Logout');
+    console.log(fixr.nativeElement.innerText);
+    expect(fixr.nativeElement.innerText).toContain('Logout');
   });
-
-
 });

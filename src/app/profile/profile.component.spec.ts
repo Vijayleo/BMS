@@ -5,7 +5,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import {
+  MatDatepicker,
+  MatDatepickerModule
+} from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -25,17 +28,27 @@ describe('ProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ],
-      imports:[
+      declarations: [ProfileComponent],
+      imports: [
         HttpClientModule,
         RouterTestingModule,
-        FormsModule,ReactiveFormsModule,
-        MatDialogModule,MatSelectModule,MatFormFieldModule,MatInputModule,BrowserAnimationsModule,MatToolbarModule,MatDatepickerModule,MatCardModule,BrowserDynamicTestingModule,
-        MatNativeDateModule,MatRadioModule,MatButtonModule
-        ],
-         schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+        FormsModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatDatepickerModule,
+        MatCardModule,
+        BrowserDynamicTestingModule,
+        MatNativeDateModule,
+        MatRadioModule,
+        MatButtonModule
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -57,30 +70,31 @@ describe('ProfileComponent', () => {
   });
 
   it('Button Text validation', async () => {
-    const fixr = fixture.debugElement.queryAll(By.css("button")).find(buttonEl => buttonEl.nativeElement.textContent==='Update Profile');
-    console.log(fixr.nativeElement.innerText)
-   expect(fixr.nativeElement.innerText).toContain('Update Profile');
+    const fixr = fixture.debugElement
+      .queryAll(By.css('button'))
+      .find(
+        (buttonEl) => buttonEl.nativeElement.textContent === 'Update Profile'
+      );
+    console.log(fixr.nativeElement.innerText);
+    expect(fixr.nativeElement.innerText).toContain('Update Profile');
   });
 
   it('Name field validity', async () => {
-    let name = component.personalFormGroup.controls["fullname"]
+    const name = component.personalFormGroup.controls['fullname'];
     expect(name.valid).toBeFalsy();
 
-    name.setValue("");
+    name.setValue('');
     expect(name.hasError('required')).toBeTruthy();
 
-    name.setValue("58");
-    let errors = {}
+    name.setValue('58');
+    let errors = {};
     errors = name.errors || {};
     expect(name.hasError('pattern')).toBeTruthy();
-
   });
 
-
   it('Radio option field validity', async () => {
-    let Gender = component.personalFormGroup.controls["gender"]
-    Gender.setValue("Female");
-    expect(Gender.value).toBe("Female");
-  })
-
+    const Gender = component.personalFormGroup.controls['gender'];
+    Gender.setValue('Female');
+    expect(Gender.value).toBe('Female');
+  });
 });

@@ -5,17 +5,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoanApplyService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor( private httpClient:HttpClient) { }
-
-
-  
-  applyLoan(loan)
-  {
+  applyLoan(loan) {
     //return this.http.post(`http://localhost:8080/applyLoan`,loan)
-    return this.httpClient.post<any>('http://localhost:8080/applyLoan',loan)
+    return this.httpClient.post<any>('http://localhost:8080/applyLoan', loan);
   }
-
-
-  
 }

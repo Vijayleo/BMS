@@ -18,81 +18,72 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports:[
+      declarations: [LoginComponent],
+      imports: [
         HttpClientModule,
         RouterTestingModule,
-        FormsModule,ReactiveFormsModule,MatCardModule,MatFormFieldModule,MatInputModule,BrowserAnimationsModule,MatButtonModule
-       ]
-    })
-    .compileComponents();
+        FormsModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        BrowserAnimationsModule,
+        MatButtonModule
+      ]
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('Login title validation', () => {
-    
-    const matcard = Array.from(
-      document.getElementsByTagName('mat-card')
-    );
-    
-    matcard.forEach(card => {
-      const cardTitle = card.getElementsByTagName('mat-card-title')[0].textContent;
-      console.log(cardTitle)
-      expect(cardTitle).toEqual("Login")
-      });
+    const matcard = Array.from(document.getElementsByTagName('mat-card'));
 
+    matcard.forEach((card) => {
+      const cardTitle = card.getElementsByTagName('mat-card-title')[0]
+        .textContent;
+      console.log(cardTitle);
+      expect(cardTitle).toEqual('Login');
+    });
   });
 
-  it('Username validation', () => {   
-   
-      let username = component.loginFormGroup.controls['username']
-      expect(username.valid).toBeFalsy();
-  
-      username.setValue("");
-      expect(username.hasError('required')).toBeTruthy();      
+  it('Username validation', () => {
+    const username = component.loginFormGroup.controls['username'];
+    expect(username.valid).toBeFalsy();
 
+    username.setValue('');
+    expect(username.hasError('required')).toBeTruthy();
   });
 
-
-  it('Password validation', () => {   
-   
-    let password = component.loginFormGroup.controls['password']
+  it('Password validation', () => {
+    const password = component.loginFormGroup.controls['password'];
     expect(password.valid).toBeFalsy();
 
-    password.setValue("");
-    expect(password.hasError('required')).toBeTruthy();      
+    password.setValue('');
+    expect(password.hasError('required')).toBeTruthy();
+  });
 
-});
+  it('form invalid when empty', () => {
+    expect(component.loginFormGroup.valid).toBeFalsy();
+  });
 
-it('form invalid when empty', () => {
-  expect(component.loginFormGroup.valid).toBeFalsy();
-});
-
-it('Login button validation', () => {   
- 
+  it('Login button validation', () => {
     const testForm = <NgForm>{
-    value: {
-      username: "leo",
-      password: "leo"
-    }
-};
+      value: {
+        username: 'leo',
+        password: 'leo'
+      }
+    };
 
-  component.loginfn(testForm)
- expect(component.data.username).toContain('leo');
- expect(component.data.password).toContain('leo'); 
-});
-
-
-
+    component.loginfn(testForm);
+    expect(component.data.username).toContain('leo');
+    expect(component.data.password).toContain('leo');
+  });
 });

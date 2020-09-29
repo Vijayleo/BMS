@@ -6,18 +6,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
-
 const routes: Routes = [
-  {path:'' , component: LoginComponent},
-  {path:'login', component:LoginComponent},
-  {path:'register', component:RegistrationComponent},
-  {path:'welcome', component:WelcomeComponent},
-  {path:'applyLoan', component:ApplyLoanCompComponent},
-  {path:'updateProfile', component:ProfileComponent}
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
+  { path: 'welcome', component: WelcomeComponent },
+  { path: 'applyLoan', component: ApplyLoanCompComponent },
+  { path: 'updateProfile', component: ProfileComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

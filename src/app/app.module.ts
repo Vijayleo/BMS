@@ -9,7 +9,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasicAuthHtppInterceptorService } from './service/basic-auth-htpp-interceptor-service.service';
-import { MAT_LABEL_GLOBAL_OPTIONS, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import {
+  MAT_LABEL_GLOBAL_OPTIONS,
+  MatNativeDateModule,
+  MAT_DATE_LOCALE
+} from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -58,8 +62,7 @@ import { DialogComponent } from './dialog/dialog.component';
     ApplyLoanCompComponent,
     ProfileComponent,
     DialogComponent
-    
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -67,7 +70,6 @@ import { DialogComponent } from './dialog/dialog.component';
     FormsModule,
     ReactiveFormsModule,
 
-    
     HttpClientModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -104,10 +106,12 @@ import { DialogComponent } from './dialog/dialog.component';
     MatNativeDateModule
   ],
   providers: [
-    {  
-      provide:HTTP_INTERCEPTORS, useClass:BasicAuthHtppInterceptorService, multi:true 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BasicAuthHtppInterceptorService,
+      multi: true
     }
-    ],
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

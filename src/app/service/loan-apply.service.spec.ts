@@ -8,8 +8,7 @@ describe('LoanApplyService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports:[
-        HttpClientModule]
+      imports: [HttpClientModule]
     });
     service = TestBed.inject(LoanApplyService);
   });

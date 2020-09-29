@@ -1,34 +1,31 @@
-export class User
-{
-    constructor(
-    public fullname : String,
-    public username : String,
-	public password : String,
-	public guardianType : String,
-	public guardianName : String ,
-	public address : String ,
-	public citizenship : String,
-	public state:String ,
-	public country:String ,
-	public emailAddress:String ,
-	public gender:String ,
-	public maritalStatus:String ,
-	public contactNo:number,
-	public dob :Date ,
-	public registrationDate:Date ,
-	public  accountType:String,
-	public branchName:String ,
-	public citizenStatus:String ,
-    public amount : number,
-    public idProofType:String ,
-	public idDocNo: String ,
-	public acHolderName :String ,
-	public acHolderAccNo :String ,
-	public acHolderAddr: String ,
-	public accountNumber :String ,
-	public customerId: String ,
-	public bankName: String 
-	){}
+export class User {
+  constructor(
+    public fullname: string,
+    public username: string,
+    public password: string,
+    public guardianType: string,
+    public guardianName: string,
+    public address: string,
+    public citizenship: string,
+    public state: string,
+    public country: string,
+    public emailAddress: string,
+    public gender: string,
+    public maritalStatus: string,
+    public contactNo: number,
+    public dob: Date,
+    public registrationDate: Date,
+    public accountType: string,
+    public branchName: string,
+    public citizenStatus: string,
+    public amount: number,
+    public idProofType: string,
+    public idDocNo: string,
+    public acHolderName: string,
+    public acHolderAccNo: string,
+    public acHolderAddr: string,
+    public accountNumber: string,
+    public customerId: string,
+    public bankName: string
+  ) {}
 }
-
-

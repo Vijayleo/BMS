@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../service/registration.service';
 import { User } from './modal/register';
-import { MatStepper } from '@angular/material/stepper'
+import { MatStepper } from '@angular/material/stepper';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-registration',
@@ -14,40 +18,80 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-
   personalFormGroup: FormGroup;
   addressFormGroup: FormGroup;
   accountFormGroup: FormGroup;
   otherFormGroup: FormGroup;
-  isEditable = true
+  isEditable = true;
 
   registrationFormGroup: FormGroup;
 
   register: User;
   userData: User;
-  genders = ['Male', 'Female']
-  maritialStatus = ['Married', 'Unmarried']
-  today = new Date()
-  message = ''
-  custidProof = ['PAN Card', 'Passport', 'Voter Id']
-  accountTypes = ['Savings', 'Salary']
+  genders = ['Male', 'Female'];
+  maritialStatus = ['Married', 'Unmarried'];
+  today = new Date();
+  message = '';
+  custidProof = ['PAN Card', 'Passport', 'Voter Id'];
+  accountTypes = ['Savings', 'Salary'];
 
-  constructor(private _formBuilder: FormBuilder, private registerService: RegistrationService, private router: Router,public dialog: MatDialog) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private registerService: RegistrationService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {
     this.today.setDate(this.today.getDate());
-    this.userData = new User('', '', '', '', '', '', '', '', '', '', '', '', 0, new Date(), new Date(), '', '', '', 0, '', '', '', '', '', '', '', '');
+    this.userData = new User(
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      0,
+      new Date(),
+      new Date(),
+      '',
+      '',
+      '',
+      0,
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      ''
+    );
   }
-
 
   ngOnInit() {
     this.personalFormGroup = this._formBuilder.group({
-      fullname: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+      fullname: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z ]*')
+      ]),
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       gender: new FormControl('Male', Validators.required),
       dob: new FormControl(''),
       maritalStatus: new FormControl('Unmarried', Validators.required),
-      emailAddress: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-      contactNo: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+      emailAddress: new FormControl(
+        '',
+        Validators.compose([Validators.required, Validators.email])
+      ),
+      contactNo: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$')
+      ]),
       guardianType: new FormControl('', Validators.required),
       guardianName: new FormControl('', Validators.required)
     });
@@ -61,7 +105,13 @@ export class RegistrationComponent implements OnInit {
       accountType: new FormControl('', Validators.required),
       branchName: new FormControl('', Validators.required),
       citizenStatus: new FormControl('', Validators.required),
-      amount: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])),
+      amount: new FormControl(
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[0-9]*$')
+        ])
+      ),
       idDocNo: new FormControl('', Validators.required),
       registrationDate: new FormControl(''),
       idProofType: new FormControl('', Validators.required)
@@ -73,48 +123,42 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-
   onSubmit() {
-
     const obj1 = this.personalFormGroup.value;
     const obj2 = this.addressFormGroup.value;
     const obj3 = this.accountFormGroup.value;
     const obj4 = this.otherFormGroup.value;
 
-    this.register = { ...obj1, ...obj2, ...obj3, ...obj4 }
+    this.register = { ...obj1, ...obj2, ...obj3, ...obj4 };
 
-    console.log(this.register)
+    console.log(this.register);
 
     if (this.otherFormGroup.valid) {
-
       this.registerService.registerUser(this.register).subscribe(
-        response => {
-          this.userData = response
-          this.message = "User Registration Successfull"
+        (response) => {
+          this.userData = response;
+          this.message = 'User Registration Successfull';
           const dialogRef = this.dialog.open(DialogComponent, {
             width: '500px',
             data: { msg: this.message, refNo: this.userData.customerId }
           });
           dialogRef.afterClosed().subscribe((result) => {
-           this.router.navigate(['login']);
-           });
-		  
+            this.router.navigate(['login']);
+          });
         },
-        error => {
-          this.message = "Something Went Wrong. Please Contact Support"
-        const dialogRef =  this.dialog.open(DialogComponent, {
+        (error) => {
+          this.message = 'Something Went Wrong. Please Contact Support';
+          const dialogRef = this.dialog.open(DialogComponent, {
             width: '500px',
             data: { msg: this.message }
           });
           dialogRef.afterClosed().subscribe((result) => {
-           this.router.navigate(['login']);
+            this.router.navigate(['login']);
           });
-          
         }
-
-      )
+      );
     }
-    console.log(this.register)
+    console.log(this.register);
   }
 
   cancel() {
@@ -124,7 +168,6 @@ export class RegistrationComponent implements OnInit {
   goBack(stepper: MatStepper) {
     this.isEditable = true;
     stepper.previous();
-
   }
 
   goNext(stepper: MatStepper) {
@@ -133,6 +176,4 @@ export class RegistrationComponent implements OnInit {
       stepper.next();
     }
   }
-
-
 }
